@@ -18,6 +18,9 @@
     <ClCompile Include="..\vibe.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="VibeRun.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\vibe.h">

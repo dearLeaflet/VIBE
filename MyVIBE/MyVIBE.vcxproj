@@ -80,6 +80,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\vibe.cpp" />
+    <ClCompile Include="VibeRun.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\vibe.h" />
