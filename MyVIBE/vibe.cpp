@@ -148,6 +148,8 @@ vector<Rect> ViBe_BGS::ROIget(ViBe_BGS &Vibe_Bgs, Mat &frame, int frameCount)
 		erode(mask, mask, Mat(5, 5, CV_8U));
 		dilate(mask, mask, Mat(10, 10, CV_8U));
 		vector<vector<Point>> contours;
+		imshow("Mask",mask);
+		waitKey(0);
 		findContours(mask, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 		Rect maskRectTemp;
 		for (vector<vector<Point>>::iterator it = contours.begin(); it != contours.end();){

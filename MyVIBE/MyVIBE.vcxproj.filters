@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\vibe.cpp">
+    <ClCompile Include="VibeRun.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="VibeRun.cpp">
+    <ClCompile Include="vibe.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\vibe.h">
+    <ClInclude Include="vibe.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
