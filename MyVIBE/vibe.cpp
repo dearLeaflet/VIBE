@@ -149,11 +149,11 @@ vector<Rect> ViBe_BGS::ROIget(ViBe_BGS &Vibe_Bgs, Mat &frame, int frameCount)
 		dilate(mask, mask, Mat(10, 10, CV_8U));
 		vector<vector<Point>> contours;
 		imshow("Mask",mask);
-		waitKey(0);
+		//waitKey(0);
 		findContours(mask, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 		Rect maskRectTemp;
 		for (vector<vector<Point>>::iterator it = contours.begin(); it != contours.end();){
-			if (it->size() < 100){
+			if (it->size() < 50){
 				it = contours.erase(it);
 			}
 			else{
@@ -169,8 +169,8 @@ vector<Rect> ViBe_BGS::ROIget(ViBe_BGS &Vibe_Bgs, Mat &frame, int frameCount)
 	//imshow("input", frame);
 	//waitKey(10);
 	//cout << frameCount << "-" << maskRect.size() << ends;
-	imshow("img", img);
-	waitKey(10);
+	//imshow("img", img);
+	//waitKey(10);
 	maskRect = mergeFrameRect(maskRect);
 	return maskRect;
 }
@@ -180,9 +180,9 @@ int ViBe_BGS::scaleAdd(Rect &rectangle, int width, int height)
 	rectangle.x = rectangle.x - SCALEADD < 0 ? 0 : rectangle.x - SCALEADD;
 	rectangle.y = rectangle.y - SCALEADD < 0 ? 0 : rectangle.y - SCALEADD;
 	rectangle.width = rectangle.x + rectangle.width + 2 * SCALEADD >= width ?
-		width - rectangle.x : rectangle.width + 2 * SCALEADD;
+		width - rectangle.x -1: rectangle.width + 2 * SCALEADD;
 	rectangle.height = rectangle.y + rectangle.height + 2 * SCALEADD >= height ?
-		height - rectangle.y : rectangle.height + 2 * SCALEADD;
+		height - rectangle.y-1 : rectangle.height + 2 * SCALEADD;
 	return 0;
 }
 //合并图片中的若干矩形

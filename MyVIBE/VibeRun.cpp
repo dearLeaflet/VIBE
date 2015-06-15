@@ -1,5 +1,4 @@
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
@@ -13,17 +12,22 @@ int main()
 	ViBe_BGS vibeModel;
 	VideoCapture v;
 	v.open("d:/Data/test/1.ts");
-	Mat frame;
-	long long count = 0;
-	v >> frame;
-	while (frame.data)
-	{
-		++count;
-		vibeModel.ROIget(vibeModel, frame, count);
-		//imshow("img",frame);
-		//waitKey(10);
-		v >> frame;
+	vector<Rect> rectset;
+	if (v.isOpened()){
+		Mat frame;
+		long long count = 0;
+		while (v.read(frame))
+		{
+			++count;
+			rectset = vibeModel.ROIget(vibeModel, frame, count);
+			cout << count << endl;
+			for (size_t i = 0; i < rectset.size(); i++){
+				rectangle(frame,rectset[i],Scalar(0,0,255),1);
+				cout << "x1: " << rectset[i].x << " y1: " << rectset[i].y << "   x2: " << rectset[i].x + rectset[i].width << " y2: " << rectset[i].y + rectset[i].height << endl;
+			}
+			imshow("img",frame);
+			waitKey(1000);
+		}
 	}
-	system("pause");
 	return 0;
 }
